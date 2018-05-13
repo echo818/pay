@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : utf-8
 
- Date: 05/13/2018 09:53:50 AM
+ Date: 05/13/2018 17:32:36 PM
 */
 
 SET NAMES utf8;
@@ -37,9 +37,8 @@ CREATE TABLE `account` (
   `review` varchar(255) DEFAULT NULL COMMENT 'review',
   `isPay` tinyint(1) unsigned DEFAULT '0' COMMENT '是否已经支付',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '备注',
-  `updateTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `createTime` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='付款用户信息';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='付款用户信息';
 
 SET FOREIGN_KEY_CHECKS = 1;

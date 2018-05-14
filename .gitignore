@@ -8,6 +8,12 @@ yarn-error.log*
 /test/e2e/reports/
 selenium-debug.log
 
+# Fold and files
+package-lock.json
+
+pay-think/app/
+pay-think/runtime/
+
 # Editor directories and files
 .idea
 .vscode

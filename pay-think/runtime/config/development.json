@@ -16,7 +16,7 @@
     "type": "file",
     "file": {
       "timeout": 86400000,
-      "cachePath": "/Users/echo/Desktop/paypal/pay-think/runtime/cache",
+      "cachePath": "/Users/echo/Desktop/pay/pay-think/runtime/cache",
       "pathDepth": 1,
       "gcInterval": 86400000
     }
@@ -42,13 +42,13 @@
       "cookie": {
         "name": "thinkjs"
       },
-      "sessionPath": "/Users/echo/Desktop/paypal/pay-think/runtime/session"
+      "sessionPath": "/Users/echo/Desktop/pay/pay-think/runtime/session"
     }
   },
   "view": {
     "type": "nunjucks",
     "nunjucks": {
-      "viewPath": "/Users/echo/Desktop/paypal/pay-think/view",
+      "viewPath": "/Users/echo/Desktop/pay/pay-think/view",
       "sep": "_",
       "extname": ".html"
     }
@@ -60,14 +60,14 @@
       "backups": 10,
       "absolute": true,
       "maxLogSize": 51200,
-      "filename": "/Users/echo/Desktop/paypal/pay-think/logs/app.log"
+      "filename": "/Users/echo/Desktop/pay/pay-think/logs/app.log"
     },
     "dateFile": {
       "level": "ALL",
       "absolute": true,
       "pattern": "-yyyy-MM-dd",
       "alwaysIncludePattern": true,
-      "filename": "/Users/echo/Desktop/paypal/pay-think/logs/app.log"
+      "filename": "/Users/echo/Desktop/pay/pay-think/logs/app.log"
     }
   }
 }

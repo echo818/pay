@@ -2,7 +2,7 @@
   "apps": [{
     "name": "pay-think",
     "script": "production.js",
-    "cwd": "/Users/ZRC/Desktop/pay/pay-think",
+    "cwd": "/Users/echo/Desktop/pay/pay-think",
     "exec_mode": "fork",
     "max_memory_restart": "1G",
     "autorestart": true,

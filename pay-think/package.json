@@ -21,7 +21,7 @@
     "think-view": "^1.0.0",
     "think-view-nunjucks": "^1.0.1",
     "thinkjs": "^3.0.0",
-    "xlsx": "^0.12.6"
+    "xlsx": "^0.12.12"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -49,8 +49,7 @@
       "babel": true
     },
     "projectName": "pay-think",
-    "templateName": "/usr/local/lib/node_modules/think-cli/default_template",
-    "cacheTemplatePath": "/Users/ZRC/.think-templates/-usr-local-lib-node_modules-think-cli-default_template",
+    "template": "/usr/local/lib/node_modules/think-cli/default_template",
     "clone": false,
     "isMultiModule": false
   }

@@ -1,14 +1,14 @@
 <template>
   <el-form class="login-form" :model="form" label-width="100px">
-    <el-form-item label="ORT">
+    <el-form-item label="OTR">
       <el-select
-        v-model="form.ort"
+        v-model="form.otr"
         filterable
         remote
-        placeholder="请输入ORT"
-        :remote-method="ortEvt">
+        placeholder="请输入OTR"
+        :remote-method="otrEvt">
         <el-option
-          v-for="(item, index) in ortList"
+          v-for="(item, index) in otrList"
           :key="index"
           :label="item"
           :value="item">
@@ -42,20 +42,20 @@ export default {
   data () {
     return {
       form: {
-        ort: '',
+        otr: '',
         admin: ''
       },
-      ortList: [],
+      otrList: [],
       adminList: []
     }
   },
   methods: {
-    ortEvt (val) {
+    otrEvt (val) {
       this.$ajax(
         '/index/filter',
-        { val, type: 'ort' }
+        { val, type: 'otr' }
       ).then(res => {
-        this.ortList = res
+        this.otrList = res
       }, () => {
         this.$message.error('请求异常')
       })

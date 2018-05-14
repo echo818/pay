@@ -12,8 +12,8 @@ module.exports = class extends Base {
     const {val, type} = this.post('val,type')
     const account = this.model('account')
     let data = []
-    if (type === 'ort') {
-      data = await account.where({ort: ['like', `%${val}%`]}).distinct('ort').getField('ort')
+    if (type === 'otr') {
+      data = await account.where({otr: ['like', `%${val}%`]}).distinct('otr').getField('otr')
     } else if (type === 'admin') {
       data = await account.where({admin: ['like', `%${val}%`]}).distinct('admin').getField('admin')
     }
@@ -21,12 +21,12 @@ module.exports = class extends Base {
   }
 
   async listAction() {
-    const {page, ...params} = this.post('page,ort,admin,seller,store,asin,price')
+    const {page, ...params} = this.post('page,otr,admin,seller,store,asin,price')
     for (let key in params) {
       if (params[key] === '') delete params[key]
     }
     const account = this.model('account')
-    const data = await account.where(params).page(page).countSelect()
+    const data = await account.where(params).order('id DESC').page(page).countSelect()
     if (think.isEmpty(data)) {
       return this.fail('找不到信息')
     }
@@ -36,12 +36,12 @@ module.exports = class extends Base {
   async exportAction() {
     this.header('Content-Disposition', `attachment; filename=${Date.now()}.xlsx`)
 
-    const params = this.get('ort,admin,seller,store,asin,price')
+    const params = this.get('otr,admin,seller,store,asin,price')
     for (let key in params) {
       if (params[key] === '') delete params[key]
     }
     const account = this.model('account')
-    const data = await account.where(params).select()
+    const data = await account.where(params).order('id DESC').fieldReverse('createTime').select()
     
     const ws = XLSX.utils.json_to_sheet(data)
     const wb = XLSX.utils.book_new()

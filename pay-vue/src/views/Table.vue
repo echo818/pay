@@ -4,8 +4,8 @@
       <el-form :model="form" label-width="100px">
         <el-row>
           <el-col :span="8">
-            <el-form-item label="ORT">
-              <el-input v-model="form.ort"></el-input>
+            <el-form-item label="OTR">
+              <el-input v-model="form.otr"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -52,10 +52,10 @@
         border
         style="width: 100%">
         <el-table-column
-          label="ORT"
+          label="OTR"
           min-width="180">
           <template slot-scope="scope">
-            <el-input v-model="scope.row.ort" placeholder="请输入ORT"></el-input>
+            <el-input v-model="scope.row.otr" placeholder="请输入OTR"></el-input>
           </template>
         </el-table-column>
         <el-table-column
@@ -136,10 +136,31 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="isPay"
+          label="money1"
           min-width="80">
           <template slot-scope="scope">
-            <el-switch v-model="scope.row.isPay" :active-value="1" :inactive-value="0"></el-switch>
+            <el-switch v-model="scope.row.money1" :active-value="1" :inactive-value="0"></el-switch>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="commission1"
+          min-width="120">
+          <template slot-scope="scope">
+            <el-switch v-model="scope.row.commission1" :active-value="1" :inactive-value="0"></el-switch>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="money2"
+          min-width="80">
+          <template slot-scope="scope">
+            <el-switch v-model="scope.row.money2" :active-value="1" :inactive-value="0"></el-switch>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="commission2"
+          min-width="120">
+          <template slot-scope="scope">
+            <el-switch v-model="scope.row.commission2" :active-value="1" :inactive-value="0"></el-switch>
           </template>
         </el-table-column>
         <el-table-column
@@ -175,10 +196,10 @@ import { URL } from '@/config'
 export default {
   name: 'tables',
   data () {
-    const {ort, admin} = this.$route.query
+    const {otr, admin} = this.$route.query
     return {
       form: {
-        ort,
+        otr,
         admin,
         seller: '',
         store: '',
@@ -195,9 +216,9 @@ export default {
   },
   methods: {
     addEvt () {
-      const {ort, admin, seller} = this.form
-      this.tableData.push({
-        ort,
+      const {otr, admin, seller} = this.form
+      this.tableData.unshift({
+        otr,
         admin,
         seller,
         store: '',
@@ -208,7 +229,10 @@ export default {
         orderId: '',
         paypal: '',
         review: '',
-        isPay: 0,
+        money1: 0,
+        commission1: 0,
+        money2: 0,
+        commission2: 0,
         remark: ''
       })
     },
@@ -231,7 +255,7 @@ export default {
       for (let rows of this.tableData) {
         if (rows.id === undefined) {
           this.newRows.push({
-            ort: this.form.ort,
+            otr: this.form.otr,
             ...rows
           })
         } else {
@@ -260,7 +284,7 @@ export default {
         this.form
       ).then(res => {
         this.tableData = res.data
-        this.total = res.totalPages
+        this.total = res.count
       }, () => {
         this.$message.error('没有找到数据')
       })
